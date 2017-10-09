@@ -173,7 +173,7 @@ static iomux_v3_cfg_t const usdhc3_pads[] = {
 	MX6_PAD_SD3_DAT5__SD3_DATA5 | MUX_PAD_CTRL(USDHC_PAD_CTRL),
 	MX6_PAD_SD3_DAT6__SD3_DATA6 | MUX_PAD_CTRL(USDHC_PAD_CTRL),
 	MX6_PAD_SD3_DAT7__SD3_DATA7 | MUX_PAD_CTRL(USDHC_PAD_CTRL),
-	MX6_PAD_NANDF_D0__GPIO2_IO00 | MUX_PAD_CTRL(NO_PAD_CTRL), /* CD */
+	MX6_PAD_SD3_RST__GPIO7_IO08 | MUX_PAD_CTRL(NO_PAD_CTRL), /* CD */
 };
 
 static iomux_v3_cfg_t const usdhc4_pads[] = {
@@ -299,9 +299,9 @@ struct fsl_esdhc_cfg usdhc_cfg[3] = {
 #endif
 
 #ifdef CONFIG_QWKS_REV3
-#define USDHC3_CD_GPIO  IMX_GPIO_NR(7, 1)
+#define USDHC3_CD_GPIO  IMX_GPIO_NR(7, 8)
 #else
-#define USDHC3_CD_GPIO	IMX_GPIO_NR(2, 0)
+#define USDHC3_CD_GPIO	IMX_GPIO_NR(7, 8)
 #endif
 
 int board_mmc_get_env_dev(int devno)
@@ -913,13 +913,13 @@ int board_late_init(void)
 int checkboard(void)
 {
 #ifdef CONFIG_SCMHVB
-	puts("Board: MX6DQSCM-HVB\n");
+	puts("Board: RHOMB-MX6DQSCM-HVB\n");
 #elif CONFIG_SCMEVB
-	puts("Board: MX6DQSCM-EVB\n");
+	puts("Board: RHOMB-MX6DQSCM-EVB\n");
 #elif CONFIG_QWKS_REV3
-	puts("Board: MX6DQSCM-QWKS-REV3\n");
+	puts("Board: RHOMB-MX6DQSCM-QWKS-REV3\n");
 #else
-	puts("Board: MX6DQSCM-QWKS\n");
+	puts("Board: RHOMB-MX6DQSCM-QWKS\n");
 #endif
 	return 0;
 }
